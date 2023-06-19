@@ -7,19 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		876C21C32A402F8C00B980DA /* multi_level_tca_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C21C22A402F8C00B980DA /* multi_level_tca_swiftuiApp.swift */; };
+		876C21C32A402F8C00B980DA /* TaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C21C22A402F8C00B980DA /* TaskApp.swift */; };
 		876C21C52A402F8C00B980DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C21C42A402F8C00B980DA /* ContentView.swift */; };
 		876C21C72A402F8D00B980DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876C21C62A402F8D00B980DA /* Assets.xcassets */; };
 		876C21CB2A402F8D00B980DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876C21CA2A402F8D00B980DA /* Preview Assets.xcassets */; };
+		876C21D32A402FDE00B980DA /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 876C21D22A402FDE00B980DA /* ComposableArchitecture */; };
+		876C21D52A40302F00B980DA /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C21D42A40302F00B980DA /* TreeNode.swift */; };
+		876C21D72A40307500B980DA /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C21D62A40307500B980DA /* TaskModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		876C21BF2A402F8C00B980DA /* multi-level-tca-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "multi-level-tca-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		876C21C22A402F8C00B980DA /* multi_level_tca_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multi_level_tca_swiftuiApp.swift; sourceTree = "<group>"; };
+		876C21C22A402F8C00B980DA /* TaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskApp.swift; sourceTree = "<group>"; };
 		876C21C42A402F8C00B980DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		876C21C62A402F8D00B980DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		876C21C82A402F8D00B980DA /* multi_level_tca_swiftui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = multi_level_tca_swiftui.entitlements; sourceTree = "<group>"; };
 		876C21CA2A402F8D00B980DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		876C21D42A40302F00B980DA /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
+		876C21D62A40307500B980DA /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				876C21D32A402FDE00B980DA /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,8 +58,10 @@
 		876C21C12A402F8C00B980DA /* multi-level-tca-swiftui */ = {
 			isa = PBXGroup;
 			children = (
-				876C21C22A402F8C00B980DA /* multi_level_tca_swiftuiApp.swift */,
+				876C21C22A402F8C00B980DA /* TaskApp.swift */,
 				876C21C42A402F8C00B980DA /* ContentView.swift */,
+				876C21D62A40307500B980DA /* TaskModel.swift */,
+				876C21D42A40302F00B980DA /* TreeNode.swift */,
 				876C21C62A402F8D00B980DA /* Assets.xcassets */,
 				876C21C82A402F8D00B980DA /* multi_level_tca_swiftui.entitlements */,
 				876C21C92A402F8D00B980DA /* Preview Content */,
@@ -85,6 +93,9 @@
 			dependencies = (
 			);
 			name = "multi-level-tca-swiftui";
+			packageProductDependencies = (
+				876C21D22A402FDE00B980DA /* ComposableArchitecture */,
+			);
 			productName = "multi-level-tca-swiftui";
 			productReference = 876C21BF2A402F8C00B980DA /* multi-level-tca-swiftui.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 876C21B62A402F8C00B980DA;
+			packageReferences = (
+				876C21D12A402FDE00B980DA /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 876C21C02A402F8C00B980DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,7 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				876C21C52A402F8C00B980DA /* ContentView.swift in Sources */,
-				876C21C32A402F8C00B980DA /* multi_level_tca_swiftuiApp.swift in Sources */,
+				876C21C32A402F8C00B980DA /* TaskApp.swift in Sources */,
+				876C21D72A40307500B980DA /* TaskModel.swift in Sources */,
+				876C21D52A40302F00B980DA /* TreeNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		876C21D12A402FDE00B980DA /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.52.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		876C21D22A402FDE00B980DA /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 876C21D12A402FDE00B980DA /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 876C21B72A402F8C00B980DA /* Project object */;
 }
