@@ -11,9 +11,14 @@ import SwiftUI
 struct TaskApp: App {
   var body: some Scene {
     WindowGroup {
+      #if os(iOS)
       NavigationView {
         ContentView()
       }
+      #else
+      ContentView()
+      #endif
+
     }
   }
 }

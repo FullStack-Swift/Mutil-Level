@@ -13,7 +13,7 @@ struct ContentReducer: ReducerProtocol {
   struct State: Equatable {
     fileprivate var taskModels: IdentifiedArrayOf<TaskModel> = []
     var rootTreeNode: TreeNode<TaskModel> = .init(value: .init())
-
+    var flag: Bool = false // flag is a suject for update UI
     var treeNodes: IdentifiedArrayOf<TreeNode<TaskModel>> {
       var array = rootTreeNode
         .arrayTreeNodeWithoutHiddenChildren()
@@ -106,6 +106,7 @@ struct ContentReducer: ReducerProtocol {
           }
       }
       state.taskModels = IdentifiedArray(uniqueElements: state.rootTreeNode.arrayTreeNode().compactMap({$0.value}))
+      state.flag.toggle()
       return .none
     }
   }
@@ -138,7 +139,6 @@ struct ContentView: View {
               .resizable()
               .frame(width: 25, height: 25, alignment: .center)
               .onTapGesture {
-                viewStore.objectWillChange.send()
                 viewStore.send(.toggleTask(item))
               }
             Text(item.value.name)
@@ -148,51 +148,58 @@ struct ContentView: View {
               .frame(width: 25, height: 25, alignment: .center)
               .contentShape(Rectangle())
               .onTapGesture {
-                viewStore.objectWillChange.send()
                 viewStore.send(.deleteTask(withID: item.value.id))
               }
             Image(systemName: "plus")
               .frame(width: 25, height: 25, alignment: .center)
               .contentShape(Rectangle())
               .onTapGesture {
-                viewStore.objectWillChange.send()
                 viewStore.send(.createTask(parentID: item.value.id))
               }
             if !item.children.isEmpty {
               Image(systemName: "chevron.right.circle")
                 .rotationEffect(item.isHiddenChildren ? .degrees(90) : .degrees(0))
                 .onTapGesture {
-                  viewStore.objectWillChange.send()
                   viewStore.send(.toggleExpandingTask(item))
                 }
             }
           }
         }
         .onDelete(perform: { index in
-          viewStore.objectWillChange.send()
           viewStore.send(.delete(index))
         })
         .onMove { from, to in
-          viewStore.objectWillChange.send()
           viewStore.send(.move(from, to))
         }
       }
       .navigationTitle(Text("Task"))
+      #if os(iOS)
       .navigationBarItems(leading: leading,trailing: trailing)
+      #else
+      .toolbar {
+        ToolbarItemGroup(placement: .status) {
+          Spacer()
+          Button("reset") {
+            viewStore.send(.removeAll)
+          }
+          Button("+") {
+            viewStore.send(.createTask(parentID: nil))
+          }
+        }
+      }
+      #endif
     }
   }
 
   private var trailing: some View {
     Image(systemName: "plus")
       .onTapGesture {
-        viewStore.objectWillChange.send()
         viewStore.send(.createTask(parentID: nil))
       }
   }
 
   private var leading: some View {
     Button("Reset", action: {
-      viewStore.objectWillChange.send()
       viewStore.send(.removeAll)
     })
   }
